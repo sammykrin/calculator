@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="bootstrap4/font/fontawesome/web-fonts-with-css/css/fontawesome-all.css">
+	<title>calcu</title>
+</head>
+<style>
+		text-decoration-line: none;
+	table{
+		text-align: center;
+	}
+	button{
+		width: 50px;
+		height: 100%;
+		/*background-color: #C8DB74*/
+	}
+	input{
+		width: 100%;
+		height: 100%;
+		font-size: 46px;
+	}
+	#bg{
+			background-image: url("Img/woman.jpg");
+			width: auto;
+			height: 100vh;
+			background-size: cover;
+			background-repeat: no-repeat;
+			color: #fff;	 
+			background-attachment:fixed;
+			font-family: Bellefair-Regular;
+			font-size: 25px; 
+		}
+
+</style>
+<body>
+	<div class="container-fluid" style="background-color: ">
+		<div id="bg">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<table class="table-light" border="10" width="50%" height="500px" align="center" style="margin-top: 60px;">
+					<td colspan="5"><input type="text" id="tim"></td>
+					<tr>
+						<td colspan="5"><input type="text" name="" height="50px" id="result" style="background-color:#BCCD95"></td>
+					</tr>
+
+					<tr>
+						<td><button onclick="operate('')" class="btn btn-sm">&#8730</button></td>
+						<td><button onclick="operate('')" class="btn btn-sm">&#960</button></td>
+						<td><button onclick="operate('')" class="btn btn-sm">&#650</button></td>
+						<td><button onclick="operate('')" class="btn btn-sm">&#131</button></td>
+						<td><input type="button" name="" id="power" onclick="toggle()" value="On" class="btn btn-sm"></td>
+					</tr>
+
+					<tr>
+						<td><button onclick="operator('dvision')" class="btn btn-sm btn-info">/</button></td>
+						<td><button onclick="operator('times')" class="btn btn-sm btn-info">*</button></td>
+						<td><button onclick="operator('>')" class="btn btn-sm btn-info"><</button></td>
+						<td><button onclick="operator('in')" class="btn btn-sm btn-info">in</button></td>
+						<td><button onclick="clears('')" class="btn btn-sm btn-info">del</button></td>
+					</tr>
+
+					<tr>
+						<td><button onclick="get('7')" class="btn btn-sm btn-info">7</button></td>
+						<td><button onclick="get('8')" class="btn btn-sm btn-info">8</button></td>
+						<td><button onclick="get('9')" class="btn btn-sm btn-info">9</button></td>
+						<td><button onclick="operatorLog()" class="btn btn-sm btn-info">log</button></td>
+						<td><button onclick="operator('minus')" style="background-color:#f35567 ">-</button></td>
+					</tr>
+					
+					<tr>
+						<td><button onclick="get('4')" class="btn btn-sm btn-info">4</button></td>
+						<td><button onclick="get('5')" class="btn btn-sm btn-info">5</button></td>
+						<td><button onclick="get('6')" class="btn btn-sm btn-info">6</button></td>
+						<td><button onclick="operateCos()" class="btn btn-sm btn-info">cos</button></td>
+						<td><button onclick="operator('plus')" class="btn btn-sm btn-success">+</button></td>
+						
+					</tr>
+
+					<tr>
+						<td><button onclick="get('1')" class="btn btn-sm ">1</button></td>
+						<td><button onclick="get('2')" class="btn btn-sm ">2</button></td>
+						<td><button onclick="get('3')" class="btn btn-sm ">3</button></td>
+						<td><button onclick="operateSin()" class="btn btn-sm ">sin</button></td>
+						<td rowspan="2"><button onclick="equals('')" style="background-color: #218838">=</button></td>
+					</tr>
+
+					<tr>
+						<td><button onclick="operateTan()" class="btn btn-sm ">tan</button></td>
+						<td colspan="2"><button onclick="get('0')" style="width: 100%; background-color: #B9BFBD">0</button></td>
+						<td><button onclick="get('.')" class="btn btn-sm ">.</button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript">
+	var fValue;
+	var sValue;
+	var oper;
+	function toggle()
+	{
+		if (power.value == 'On') 
+			{
+			 power.value='Off';
+			 result.value='0';
+			}
+			else{
+				power.value='On';
+				result.value='';
+			    }
+	} 
+	function operator(u)
+	{ 
+		fValue=result.value;
+		result.value='';
+		oper=u;
+		
+	}
+	function equals()
+	{
+		sValue = result.value;
+		result.value ='';
+		if(oper =='times')
+		{
+			result.value = parseInt(fValue) * parseInt(sValue);
+		}
+		else if(oper=='plus')
+		{
+			result.value = parseInt(fValue) + parseInt(sValue);
+		}
+		else if(oper=='minus')
+		{
+			result.value = parseInt(fValue) - parseInt(sValue);
+		}
+		else if(oper=='dvision')
+		{
+			result.value = parseInt(fvalue) / parseInt(sValue);
+		}
+		else if(oper=='sin')
+			result.value=(math.sin);
+	}
+	function get(b)
+	{
+		// var btn=power.value
+		// if(btn=='OFF')
+		// {
+		// 	result.value +=b;
+		// }
+		// else if(btn=='ON')
+		// {}
+		var c=result.value;
+		var po=power.value;
+		if(po=='Off')
+		{
+		if (b =="clears") {result.value="0";}
+		else{if (c=="0") {result.value=b;}
+		else{result.value+=b;} }
+	    }
+	    else{result.value='';}
+
+	}
+	function clears()
+	{
+		var po=power.value;
+		if(po=='Off'){
+		var str=result.value;
+		var l=str.length;
+		l--;
+		result.value=str.substr(0,l);
+		if(str==1){result.value='0';}
+	}
+	}
+	function operateSin()
+	{
+		result.value=Math.sin(result.value*Math.PI/180);
+	}
+	function operateCos()
+	{ 
+		result.value=	Math.cos(result.value*Math.PI/180);
+	} 
+	function operateTan()
+	{
+		result.value=Math.tan(result.value*Math.PI/180);
+	}
+	function operateLog()
+	{
+		result.value=Math.log(result.value*Math.PI/180);
+	}
+	function timer()
+	{
+		var d = new Date();
+		 var h=d.getHours();
+		 var m=d.getMinutes();
+		var s=d.getSeconds();
+
+		tim.value=h+":"+m+":"+s;
+		window.setTimeout("timer()",1000);
+	}
+	timer();
+
+</script>
+<!-- <body> -->
+	<!-- <p id="sam">volvo</p> -->
+	<!-- <p id="sam">toyota</p> -->
+	<!-- <p id="">glof</p> -->
+	<!-- <p id="">benz</p> -->
+<!-- </body> -->
+<!-- <script type="text/javascript"> -->
+
+		<!-- var car=["volvo","toyota","gulf","benz"]
+		// alert(["toyota"])
+		([volvo]+""[toyota]+""[gulf]+""[benz])
+		document.getElementsByid('sam') innerHTML="my frist car is [volvo]"
+		// document.getElementsByid('sam') innerHTML="my second car is [volvo]"
+		// document.getElementsByid('sam') innerHTML="my third car is [volvo]"
+		// document.getElementsByid('sam') innerHTML="my fouth car is [volvo]" -->
+	
+<!-- </script> -->
+	<script type="text/javascript" src="bootstrap4/js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="bootstrap4/js/popper.js"></script>
+		<script type="text/javascript" src="bootstrap4/js/bootstrap.js"></script>
+</html>
